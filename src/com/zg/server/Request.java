@@ -39,7 +39,7 @@ public class Request {
             byte[] data = new byte[20480];
             int len = is.read(data);
             if (len != -1) {
-                requestInfo = decode(new String(data, 0, len).trim(), "UTF-8");
+                requestInfo = new String(data, 0, len).trim();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -118,24 +118,13 @@ public class Request {
                 keyValues[1] = null;
             }
             String key = keyValues[0].trim();
-            String value = null == keyValues[1] ? null : decode(keyValues[1].trim(),"gbk");
+            String value = null == keyValues[1] ? null : keyValues[1].trim();
             if (!parameterMapValues.containsKey(key)) {
                 parameterMapValues.put(key, new ArrayList<>());
             }
             List<String> values = parameterMapValues.get(key);
             values.add(value);
         }
-    }
-    /**
-     * 解决中文乱码问题
-     */
-    private String decode(String value, String code) {
-        try {
-            return java.net.URLDecoder.decode(value, code);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return  null;
     }
 
     void close() {
