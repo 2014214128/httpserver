@@ -13,10 +13,6 @@ public class Server {
     private boolean isShutDown = false;
 
 
-    public static void main(String[] args) {
-        Server server = new Server();
-        server.start();
-    }
     /**启动方法*/
     public void start() {
         start(8888);
