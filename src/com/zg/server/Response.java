@@ -21,13 +21,13 @@ public class Response {
     //长度
     private int len = 0;
 
-    public Response() {
+    private Response() {
         headInfo = new StringBuilder();
         content = new StringBuilder();
         len = 0;
     }
 
-    public Response(Socket client) {
+    Response(Socket client) {
         this();
         try {
             writer = new PrintWriter(client.getOutputStream());
@@ -61,7 +61,6 @@ public class Response {
 
     /**
      * 构建响应头信息
-     * @param code
      */
     private void createHead(int code) {
         //1) HTTP协议 状态码 描述
@@ -91,7 +90,7 @@ public class Response {
     /**
      * 推送到客户端
      */
-    public void pushToClient(int code) {
+    void pushToClient(int code) {
         if (null == headInfo) {
             code = 500;
         }
@@ -103,7 +102,7 @@ public class Response {
     /**
      * 关闭流
      */
-    public void close() {
+    void close() {
         writer.close();
     }
 }

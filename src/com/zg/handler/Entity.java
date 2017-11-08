@@ -12,11 +12,11 @@ public class Entity {
         return clz;
     }
 
-    public void setName(String name) {
+    void setName(String name) {
         this.name = name;
     }
 
-    public void setClz(String clz) {
+    void setClz(String clz) {
         this.clz = clz;
     }
 }

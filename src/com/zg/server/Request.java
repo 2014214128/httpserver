@@ -21,18 +21,18 @@ public class Request {
 
     private InputStream is;
 
-    public Request() {
+    private Request() {
         method = "";
         url = "";
         parameterMapValues = new HashMap<>();
         requestInfo = "";
     }
 
-    public String getUrl() {
+    String getUrl() {
         return url;
     }
 
-    public Request(InputStream is) {
+    Request(InputStream is) {
         this();
         this.is = is;
         try {
@@ -50,8 +50,8 @@ public class Request {
     /**
      * 根据页面的name,获取对应的多个值
      */
-    public String[] getParameterValues(String name) {
-        List<String> values = null;
+    private String[] getParameterValues(String name) {
+        List<String> values;
         if ((values = parameterMapValues.get(name)) == null) {
             return null;
         } else {
@@ -91,7 +91,7 @@ public class Request {
                 this.url = urlArray[0];
                 paramStr = urlArray[1];
             } else {  //没有参数
-                this.url = url;
+                this.url = urlStr;
             }
         } else if (this.method.equalsIgnoreCase("post")) {  //post的方式提交数据
             this.url = urlStr;
@@ -138,7 +138,7 @@ public class Request {
         return  null;
     }
 
-    public void close() {
+    void close() {
         try {
             is.close();
         } catch (IOException e) {

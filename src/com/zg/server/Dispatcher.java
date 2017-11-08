@@ -22,7 +22,6 @@ public class Dispatcher implements Runnable {
             response = new Response(client);
         } catch (IOException e) {
             code = 500;
-            return;
         }
     }
     @Override

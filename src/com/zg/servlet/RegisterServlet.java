@@ -8,7 +8,7 @@ import com.zg.webApplication.Servlet;
 public class RegisterServlet extends Servlet {
     @Override
     public void doGet(Request request, Response response) throws Exception {
-        response.print("<html><head><title>Http响应示例</title></head><body>login ").print(request.getParameter("name"));
+        response.print("<html><head><title>Http响应示例</title></head><body>register ").print(request.getParameter("name"));
         response.println("</body></html>");
     }
 
